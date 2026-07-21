@@ -1,0 +1,133 @@
+{% extends "admin/admin_base.html" %}
+
+{% block content %}
+
+<h2>View Treks</h2>
+
+{% if unassigned_treks %}
+
+<h3>Unassigned Treks</h3>
+
+<table border="1" cellpadding="8">
+
+<tr>
+    <th>Name</th>
+    <th>Location</th>
+    <th>Difficulty</th>
+    <th>Start Date</th>
+    <th>Duration</th>
+    <th>Price</th>
+    <th>Total Slots</th>
+    <th>Pending Slots</th>
+    <th>Status</th>
+    <th>Assigned Staff</th>
+    <th>Action</th>
+</tr>
+
+{% for trek in unassigned_treks %}
+
+<tr>
+
+    <td>{{ trek.trek_name }}</td>
+
+    <td>{{ trek.location }}</td>
+
+    <td>{{ trek.difficulty }}</td>
+
+    <td>{{ trek.start_date }}</td>
+
+    <td>{{ trek.duration }} Days</td>
+
+    <td>₹{{ trek.price }}</td>
+
+    <td>{{ trek.available_slots }}</td>
+
+    <td>
+        {{ trek.available_slots - Booking.query.filter_by(trek_id=trek.id, status="Booked").count() }}
+    </td>
+
+    <td>{{ trek.status }}</td>
+
+    <td>Not Assigned</td>
+
+    <td>
+        <a href="/edit_trek/{{ trek.id }}">Edit</a> |
+        <a href="/delete_trek/{{ trek.id }}">Delete</a> |
+        <a href="/view_bookings/{{ trek.id }}">Bookings</a>
+    </td>
+
+</tr>
+
+{% endfor %}
+
+</table>
+
+<br>
+
+{% endif %}
+
+<h3>Assigned Treks</h3>
+
+<table border="1" cellpadding="8">
+
+<tr>
+    <th>Name</th>
+    <th>Location</th>
+    <th>Difficulty</th>
+    <th>Start Date</th>
+    <th>Duration</th>
+    <th>Price</th>
+    <th>Total Slots</th>
+    <th>Pending Slots</th>
+    <th>Status</th>
+    <th>Assigned Staff</th>
+    <th>Action</th>
+</tr>
+
+{% for trek in assigned_treks %}
+
+{% set staff = User.query.get(trek.assigned_staff) %}
+
+<tr>
+
+    <td>{{ trek.trek_name }}</td>
+
+    <td>{{ trek.location }}</td>
+
+    <td>{{ trek.difficulty }}</td>
+
+    <td>{{ trek.start_date }}</td>
+
+    <td>{{ trek.duration }} Days</td>
+
+    <td>₹{{ trek.price }}</td>
+
+    <td>{{ trek.available_slots }}</td>
+
+    <td>
+        {{ trek.available_slots - Booking.query.filter_by(trek_id=trek.id, status="Booked").count() }}
+    </td>
+
+    <td>{{ trek.status }}</td>
+
+    <td>
+        {% if staff %}
+            {{ staff.username }}
+        {% else %}
+            Unknown
+        {% endif %}
+    </td>
+
+    <td>
+        <a href="/edit_trek/{{ trek.id }}">Edit</a> |
+        <a href="/delete_trek/{{ trek.id }}">Delete</a> |
+        <a href="/view_bookings/{{ trek.id }}">Bookings</a>
+    </td>
+
+</tr>
+
+{% endfor %}
+
+</table>
+
+{% endblock %}

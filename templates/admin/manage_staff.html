@@ -1,0 +1,81 @@
+{% extends "admin/admin_base.html" %}
+
+{% block content %}
+
+<h2>Manage Staff</h2>
+
+{% if staff_details %}
+
+<table border="1" cellpadding="8">
+
+    <tr>
+        <th>ID</th>
+        <th>Name</th>
+        <th>Username</th>
+        <th>Contact</th>
+        <th>Completed Treks</th>
+        <th>Assigned Treks</th>
+        <th>Status</th>
+        <th>Action</th>
+    </tr>
+
+    {% for item in staff_details %}
+
+    <form method="POST" action="/update_staff_status/{{ item.user.id }}">
+
+    <tr>
+
+        <td>{{ item.user.id }}</td>
+
+        <td>{{ item.user.name }}</td>
+
+        <td>{{ item.user.username }}</td>
+
+        <td>{{ item.user.contact }}</td>
+
+        <td>{{ item.completed_treks }}</td>
+
+        <td>{{ item.assigned_treks }}</td>
+
+        <td>
+
+            <select name="status">
+
+                <option value="Pending"
+                {% if item.user.status=="Pending" %}selected{% endif %}>
+                    Pending
+                </option>
+
+                <option value="Approved"
+                {% if item.user.status=="Approved" %}selected{% endif %}>
+                    Approved
+                </option>
+
+                <option value="Blacklisted"
+                {% if item.user.status=="Blacklisted" %}selected{% endif %}>
+                    Blacklisted
+                </option>
+
+            </select>
+
+        </td>
+
+        <td>
+            <button type="submit">Update</button>
+        </td>
+
+    </tr>
+
+    </form>
+
+    {% endfor %}
+
+</table>
+
+{% else %}
+
+<p>No staff members found.</p>
+
+{% endif %}
+
+{% endblock %}

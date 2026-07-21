@@ -1,0 +1,82 @@
+{% extends "admin/admin_base.html" %}
+
+{% block content %}
+
+<h2>Admin Dashboard</h2>
+
+<table width="40%">
+
+<tr valign="top">
+
+<!-- Left Table -->
+
+<td width="45%">
+
+<h3>Trek Details</h3>
+
+<table border="1" cellpadding="8" width="100%">
+
+<tr>
+    <th>Particular</th>
+    <th>Count</th>
+</tr>
+
+<tr><td>Total Treks</td><td>{{ total_treks }}</td></tr>
+<tr><td>Open Treks</td><td>{{ open_treks }}</td></tr>
+<tr><td>Full Treks</td><td>{{ full_treks }}</td></tr>
+<tr><td>Completed Treks</td><td>{{ completed_treks }}</td></tr>
+<tr><td>Cancelled Treks</td><td>{{ cancelled_treks }}</td></tr>
+
+</table>
+
+<!-- Right Table -->
+
+<td width="45%">
+
+<h3> Staff Details</h3>
+
+<table border="1" cellpadding="8" width="100%">
+
+<tr>
+    <th>Particular</th>
+    <th>Count</th>
+</tr>
+
+
+
+<tr><td>Total Staff</td><td>{{ total_staff }}</td></tr>
+<tr><td>Assigned Staff</td><td>{{ assigned_staff }}</td></tr>
+<tr><td>Available Staff</td><td>{{ available_staff }}</td></tr>
+<tr><td>Pending Staff Approval</td><td>{{ pending_staff }}</td></tr>
+<tr><td>Blacklisted Staff</td><td>{{ blacklisted_staff }}</td></tr>
+
+</table>
+
+</td>
+
+</td>
+
+<td width="45%"><h3>Trekkers Details</h3>
+
+<table border="1" cellpadding="8" width="100%">
+
+<tr>
+    <th>Particular</th>
+    <th>Count</th>
+</tr>
+
+
+<tr><td>Total Trekkers</td><td>{{ total_trekkers }}</td></tr>
+<tr><td>Total Bookings</td><td>{{ total_bookings }}</td></tr>
+<tr><td>Cancelled Bookings</td><td>{{ cancelled_bookings }}</td></tr>
+
+</table>
+
+</td>
+
+
+</tr>
+
+</table>
+
+{% endblock %}

@@ -1,0 +1,52 @@
+{% extends "admin/admin_base.html" %}
+
+{% block content %}
+
+<h2>{{ trek.trek_name }} - Bookings</h2>
+
+{% if bookings %}
+
+<table border="1" cellpadding="8">
+
+<tr>
+
+    <th>ID</th>
+    <th>Name</th>
+    <th>Username</th>
+    <th>Contact</th>
+    <th>Booking Date</th>
+    <th>Status</th>
+
+</tr>
+
+{% for booking in bookings %}
+
+{% set user = User.query.get(booking.user_id) %}
+
+<tr>
+
+    <td>{{ user.id }}</td>
+
+    <td>{{ user.name }}</td>
+
+    <td>{{ user.username }}</td>
+
+    <td>{{ user.contact }}</td>
+
+    <td>{{ booking.booking_date }}</td>
+
+    <td>{{ booking.status }}</td>
+
+</tr>
+
+{% endfor %}
+
+</table>
+
+{% else %}
+
+<p>No bookings found.</p>
+
+{% endif %}
+
+{% endblock %}

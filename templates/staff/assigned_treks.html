@@ -1,0 +1,55 @@
+{% extends "staff/staff_base.html" %}
+
+{% block content %}
+
+<h2>My Assigned Treks</h2>
+
+{% if trek_details %}
+
+<table border="1" cellpadding="8">
+
+    <tr>
+        <th>Name</th>
+        <th>Location</th>
+        <th>Start Date</th>
+        <th>Participants</th>
+        <th>Status</th>
+        <th>Action</th>
+    </tr>
+
+    {% for item in trek_details %}
+
+    <tr>
+
+        <td>{{ item.trek.trek_name }}</td>
+
+        <td>{{ item.trek.location }}</td>
+
+        <td>{{ item.trek.start_date }}</td>
+
+        <td>
+            {{ item.participants }} / {{ item.trek.available_slots }}
+        </td>
+
+        <td>{{ item.trek.status }}</td>
+
+        <td>
+            <a href="/staff/edit_trek/{{ item.trek.id }}">Manage</a> |
+            <a href="/staff/view_participants/{{ item.trek.id }}">
+            Participants
+        </a>
+        </td>
+
+    </tr>
+
+    {% endfor %}
+
+</table>
+
+{% else %}
+
+<p>No treks assigned.</p>
+
+{% endif %}
+
+{% endblock %}

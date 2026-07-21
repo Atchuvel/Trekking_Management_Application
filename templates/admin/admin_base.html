@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>Admin - Trekking Management</title>
+</head>
+
+<body>
+
+    <h1>Trekking Management System - Admin</h1>
+
+    <hr>
+
+    <div style="display:flex; align-items:center;">
+
+        <div>
+            <a href="/admin">Home</a> |
+            <a href="/manage_staff">Staff</a> |
+            <a href="/view_trekkers">Trekkers</a> |
+            <a href="/add_trek">Add Trek</a> |
+            <a href="/view_treks">View Treks</a> 
+        </div>
+
+        <div style="margin-left:auto;">
+            <form action="/admin/search" method="GET" style="display:inline;">
+
+                <input type="text"
+                    name="search"
+                    placeholder="Search"
+                    size="10"
+                    required>
+
+                <input type="submit" value="Search">
+
+            </form>
+            <a href="/edit_profile"><b>Admin</b></a> |
+            <a href="/logout">Logout</a>
+        </div>
+
+    </div>
+
+    <hr>
+
+    {% block content %}
+    {% endblock %}
+
+    <hr>
+
+</body>
+
+</html>

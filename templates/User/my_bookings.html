@@ -1,0 +1,86 @@
+{% extends "user/user_base.html" %}
+
+{% block content %}
+
+<div style="display:flex; align-items:center;">
+
+    <h2 style="margin:0;">My Bookings</h2>
+
+    <div style="margin-left:auto;">
+
+        <form method="GET" style="display:inline;">
+
+            <input
+                type="text"
+                name="location"
+                placeholder="Location"
+                value="{{ request.args.get('location','') }}">
+
+            <input type="submit" value="Search">
+
+            <a href="/user/my_bookings">Clear</a>
+
+        </form>
+
+    </div>
+
+</div>
+
+<br>
+
+{% if booking_details %}
+
+<table border="1" cellpadding="8">
+
+    <tr>
+        <th>Trek Name</th>
+        <th>Location</th>
+        <th>Start Date</th>
+        <th>Booking Date</th>
+        <th>Status</th>
+        <th>Action</th>
+    </tr>
+
+    {% for item in booking_details %}
+
+    <tr>
+
+        <td>{{ item.trek.trek_name }}</td>
+
+        <td>{{ item.trek.location }}</td>
+
+        <td>{{ item.trek.start_date }}</td>
+
+        <td>{{ item.booking.booking_date }}</td>
+
+        <td>{{ item.booking.status }}</td>
+
+        <td>
+
+            {% if item.booking.status == "Booked" %}
+
+            <a href="/user/cancel_booking/{{ item.booking.id }}">
+                Cancel Booking
+            </a>
+
+            {% else %}
+
+            -
+
+            {% endif %}
+
+        </td>
+
+    </tr>
+
+    {% endfor %}
+
+</table>
+
+{% else %}
+
+<p>No bookings found.</p>
+
+{% endif %}
+
+{% endblock %}

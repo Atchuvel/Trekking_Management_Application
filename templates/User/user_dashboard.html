@@ -1,0 +1,17 @@
+{% extends "user/user_base.html" %}
+
+{% block content %}
+
+<h2>User Dashboard</h2>
+
+<p>Welcome, Trekker!</p>
+
+<p><b>Available Treks :</b> {{ total_treks }}</p>
+
+<p><b>My Bookings :</b> {{ my_bookings }}</p>
+
+<p><b>Completed Treks :</b> {{ completed_treks }}</p>
+
+<p><b>Cancelled Treks:</b> {{ Cancelled_treks }}</p>
+
+{% endblock %}

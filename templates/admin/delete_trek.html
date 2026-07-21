@@ -1,0 +1,48 @@
+{% extends "admin/admin_base.html" %}
+
+{% block content %}
+
+<h2>Delete Trek</h2>
+
+<form method="POST">
+
+    <label>Trek Name</label><br>
+    <input type="text" value="{{ trek.trek_name }}" readonly>
+
+    <br><br>
+
+    <label>Location</label><br>
+    <input type="text" value="{{ trek.location }}" readonly>
+
+    <br><br>
+
+    <label>Difficulty</label><br>
+
+    <input type="text" value="{{ trek.difficulty }}" readonly>
+    
+
+    <br><br>
+
+    <label>Duration</label><br>
+    <input type="number" value="{{ trek.duration }}" readonly>
+
+    <br><br>
+
+    <label>Price</label><br>
+    <input type="number" value="{{ trek.price }}" readonly>
+
+    <br><br>
+
+    <label>Available Slots</label><br>
+    <input type="number" value="{{ trek.available_slots }}" readonly>
+
+    <br><br>
+    <p style="color:red;">
+    Are you sure you want to delete this trek?
+    </p>
+
+    <button type="submit">Delete Trek</button>
+
+</form>
+
+{% endblock %}

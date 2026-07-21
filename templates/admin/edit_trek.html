@@ -1,0 +1,179 @@
+{% extends "admin/admin_base.html" %}
+
+{% block content %}
+
+<h2>Edit Trek</h2>
+
+<form method="POST">
+
+<table cellpadding="8">
+
+<tr>
+    <td><b>Trek Name</b></td>
+    <td>
+        <input
+            type="text"
+            name="trek_name"
+            value="{{ trek.trek_name }}"
+            required>
+    </td>
+</tr>
+
+<tr>
+    <td><b>Location</b></td>
+    <td>
+        <input
+            type="text"
+            name="location"
+            value="{{ trek.location }}"
+            required>
+    </td>
+</tr>
+
+<tr>
+    <td><b>Difficulty</b></td>
+    <td>
+
+        <select name="difficulty">
+
+            <option value="Easy"
+                {% if trek.difficulty == "Easy" %}selected{% endif %}>
+                Easy
+            </option>
+
+            <option value="Moderate"
+                {% if trek.difficulty == "Moderate" %}selected{% endif %}>
+                Moderate
+            </option>
+
+            <option value="Hard"
+                {% if trek.difficulty == "Hard" %}selected{% endif %}>
+                Hard
+            </option>
+
+        </select>
+
+    </td>
+</tr>
+
+<tr>
+    <td><b>Start Date</b></td>
+    <td>
+
+        <input
+            type="date"
+            name="start_date"
+            value="{{ trek.start_date }}"
+            required>
+
+    </td>
+</tr>
+
+<tr>
+    <td><b>Duration (Days)</b></td>
+    <td>
+
+        <input
+            type="number"
+            name="duration"
+            value="{{ trek.duration }}"
+            required>
+
+    </td>
+</tr>
+
+<tr>
+    <td><b>Price</b></td>
+    <td>
+
+        <input
+            type="number"
+            name="price"
+            value="{{ trek.price }}"
+            required>
+
+    </td>
+</tr>
+
+<tr>
+    <td><b>Total Slots</b></td>
+    <td>
+
+        <input
+            type="number"
+            name="available_slots"
+            value="{{ trek.available_slots }}"
+            required>
+
+    </td>
+</tr>
+
+<tr>
+    <td><b>Assigned Staff</b></td>
+    <td>
+
+        <select name="assigned_staff">
+
+            <option value="">Not Assigned</option>
+
+            {% for member in staff %}
+
+            <option value="{{ member.id }}"
+                {% if trek.assigned_staff == member.id %}selected{% endif %}>
+
+                {{ member.username }}
+
+            </option>
+
+            {% endfor %}
+
+        </select>
+
+    </td>
+</tr>
+
+<tr>
+    <td><b>Status</b></td>
+    <td>
+
+        <select name="status">
+
+            <option value="Open"
+                {% if trek.status == "Open" %}selected{% endif %}>
+                Open
+            </option>
+
+            <option value="Full"
+                {% if trek.status == "Full" %}selected{% endif %}>
+                Full
+            </option>
+
+            <option value="Cancelled"
+                {% if trek.status == "Cancelled" %}selected{% endif %}>
+                Cancelled
+            </option>
+
+            <option value="Completed"
+                {% if trek.status == "Completed" %}selected{% endif %}>
+                Completed
+            </option>
+
+        </select>
+
+    </td>
+</tr>
+
+<tr>
+    <td></td>
+    <td>
+        <button type="submit">
+            Update Trek
+        </button>
+    </td>
+</tr>
+
+</table>
+
+</form>
+
+{% endblock %}

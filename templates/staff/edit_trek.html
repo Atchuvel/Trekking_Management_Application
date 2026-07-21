@@ -1,0 +1,87 @@
+{% extends "staff/staff_base.html" %}
+
+{% block content %}
+
+<h2>Manage Trek</h2>
+
+<form method="POST">
+
+<table cellpadding="8">
+
+<tr>
+    <td><b>Trek Name</b></td>
+    <td>
+        <input type="text" value="{{ trek.trek_name }}" readonly>
+    </td>
+</tr>
+
+<tr>
+    <td><b>Location</b></td>
+    <td>
+        <input type="text" value="{{ trek.location }}" readonly>
+    </td>
+</tr>
+
+<tr>
+    <td><b>Start Date</b></td>
+    <td>
+        <input type="text" value="{{ trek.start_date }}" readonly>
+    </td>
+</tr>
+
+<tr>
+    <td><b>Total Slots</b></td>
+    <td>
+        <input
+            type="number"
+            name="available_slots"
+            value="{{ trek.available_slots }}"
+            required>
+    </td>
+</tr>
+
+<tr>
+    <td><b>Status</b></td>
+    <td>
+
+        <select name="status">
+
+            <option value="Open"
+                {% if trek.status == "Open" %}selected{% endif %}>
+                Open
+            </option>
+
+            <option value="Full"
+                {% if trek.status == "Full" %}selected{% endif %}>
+                Full
+            </option>
+
+            <option value="Cancelled"
+                {% if trek.status == "Cancelled" %}selected{% endif %}>
+                Cancelled
+            </option>
+
+            <option value="Completed"
+                {% if trek.status == "Completed" %}selected{% endif %}>
+                Completed
+            </option>
+
+        </select>
+
+    </td>
+</tr>
+
+<tr>
+    <td></td>
+    <td>
+        <button type="submit">
+            Update Trek
+        </button>
+    </td>
+</tr>
+
+</table>
+
+</form>
+
+{% endblock %}

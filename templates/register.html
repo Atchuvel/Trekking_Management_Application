@@ -1,0 +1,71 @@
+{% extends "base.html" %}
+
+{% block content %}
+
+<h2>Register</h2>
+
+<form method="POST">
+
+<table cellpadding="8">
+
+<tr>
+    <td><b>Full Name</b></td>
+    <td>
+        <input type="text" name="name" required>
+    </td>
+</tr>
+
+<tr>
+    <td><b>Contact Number</b></td>
+    <td>
+        <input
+            type="text"
+            name="contact"
+            maxlength="10"
+            required>
+    </td>
+</tr>
+
+<tr>
+    <td><b>Username</b></td>
+    <td>
+        <input type="text" name="username" required>
+    </td>
+</tr>
+
+<tr>
+    <td><b>Password</b></td>
+    <td>
+        <input type="password" name="password" required>
+    </td>
+</tr>
+
+<tr>
+    <td><b>Confirm Password</b></td>
+    <td>
+        <input type="password" name="confirm_password" required>
+    </td>
+</tr>
+
+<tr>
+    <td><b>Role</b></td>
+    <td>
+        <select name="role">
+            <option value="user">Trekker</option>
+            <option value="staff">Trek Staff</option>
+        </select>
+    </td>
+</tr>
+
+<tr>
+    <td></td>
+    <td>
+        <button type="submit">Register</button>
+    </td>
+</tr>
+
+</table>
+
+</form>
+
+{% endblock %}

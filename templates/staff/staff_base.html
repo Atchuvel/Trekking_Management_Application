@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>Staff - Trekking Management</title>
+</head>
+
+<body>
+
+    <h1>Trekking Management System - Staff</h1>
+
+    <hr>
+
+    <div style="display:flex; align-items:center;">
+
+        <!-- Left Menu -->
+        <div>
+            <a href="/staff">Home</a> |
+            <a href="/staff/view_treks">View Treks</a> |
+            <a href="/staff/assigned_treks">My Assigned Treks</a>
+        </div>
+
+        <!-- Right Menu -->
+        <div style="margin-left:auto;">
+            Staff: <a href="/edit_profile"><b>{{ session["name"] }}</b></a> |
+            <a href="/logout">Logout</a>
+        </div>
+
+    </div>
+
+    <hr>
+
+    {% block content %}
+    {% endblock %}
+
+    <hr>
+
+</body>
+
+</html>

@@ -1,0 +1,83 @@
+{% if user.role == "admin" %}
+{% extends "admin/admin_base.html" %}
+{% elif user.role == "staff" %}
+{% extends "staff/staff_base.html" %}
+{% else %}
+{% extends "user/user_base.html" %}
+{% endif %}
+{% block content %}
+
+<h2>Edit Profile</h2>
+
+<form method="POST">
+
+<table cellpadding="8">
+
+<tr>
+    <td><b>Username</b></td>
+    <td>{{ user.username }}</td>
+</tr>
+
+<tr>
+    <td><b>Name</b></td>
+    <td>
+        <input
+            type="text"
+            name="name"
+            value="{{ user.name }}"
+            required>
+    </td>
+</tr>
+
+<tr>
+    <td><b>Contact</b></td>
+    <td>
+        <input
+            type="text"
+            name="contact"
+            value="{{ user.contact }}"
+            required>
+    </td>
+</tr>
+
+<tr>
+    <td><b>Password</b></td>
+    <td>
+        <input
+            type="password"
+            name="password"
+            placeholder="Leave blank to keep current password">
+    </td>
+</tr>
+
+<tr>
+    <td><b>Confirm Password</b></td>
+    <td>
+        <input
+            type="password"
+            name="confirm_password">
+    </td>
+</tr>
+
+<tr>
+    <td><b>Role</b></td>
+    <td>{{ user.role }}</td>
+</tr>
+
+<tr>
+    <td><b>Status</b></td>
+    <td>{{ user.status }}</td>
+</tr>
+
+<tr>
+    <td></td>
+    <td>
+        <button type="submit">Update Profile</button>
+    </td>
+</tr>
+
+</table>
+
+</form>
+
+{% endblock %}

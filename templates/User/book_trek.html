@@ -1,0 +1,38 @@
+{% extends "user/user_base.html" %}
+
+{% block content %}
+
+<h2>Book Trek</h2>
+
+<p><b>Trek Name :</b> {{ trek.trek_name }}</p>
+
+<p><b>Location :</b> {{ trek.location }}</p>
+
+<p><b>Difficulty :</b> {{ trek.difficulty }}</p>
+
+<p><b>Start Date :</b> {{ trek.start_date }}</p>
+
+<p><b>Duration :</b> {{ trek.duration }} Days</p>
+
+<p><b>Price :</b> ₹{{ trek.price }}</p>
+
+<p><b>Available Slots :</b> {{ trek.available_slots }}</p>
+
+<p><b>Current Bookings :</b> {{ current_bookings }}</p>
+
+<p>
+<b>Trek Staff :</b>
+{% if staff %}
+    {{ staff.username }}
+{% else %}
+    Not Assigned
+{% endif %}
+</p>
+
+<form method="POST">
+
+    <input type="submit" value="Confirm Booking">
+
+</form>
+
+{% endblock %}

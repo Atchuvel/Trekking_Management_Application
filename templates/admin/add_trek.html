@@ -1,0 +1,75 @@
+{% extends "admin/admin_base.html" %}
+
+{% block content %}
+
+<h2>Add Trek</h2>
+
+<form method="POST">
+
+<table cellpadding="8">
+
+<tr>
+    <td><b>Trek Name</b></td>
+    <td>
+        <input type="text" name="trek_name" required>
+    </td>
+</tr>
+
+<tr>
+    <td><b>Location</b></td>
+    <td>
+        <input type="text" name="location" required>
+    </td>
+</tr>
+
+<tr>
+    <td><b>Difficulty</b></td>
+    <td>
+        <select name="difficulty">
+            <option value="Easy">Easy</option>
+            <option value="Moderate">Moderate</option>
+            <option value="Hard">Hard</option>
+        </select>
+    </td>
+</tr>
+
+<tr>
+    <td><b>Start Date</b></td>
+    <td>
+        <input type="date" name="start_date" required>
+    </td>
+</tr>
+
+<tr>
+    <td><b>Duration (Days)</b></td>
+    <td>
+        <input type="number" name="duration" required>
+    </td>
+</tr>
+
+<tr>
+    <td><b>Price</b></td>
+    <td>
+        <input type="number" name="price" required>
+    </td>
+</tr>
+
+<tr>
+    <td><b>Total Slots</b></td>
+    <td>
+        <input type="number" name="available_slots" required>
+    </td>
+</tr>
+
+<tr>
+    <td></td>
+    <td>
+        <button type="submit">Add Trek</button>
+    </td>
+</tr>
+
+</table>
+
+</form>
+
+{% endblock %}

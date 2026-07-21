@@ -1,0 +1,77 @@
+{% extends "admin/admin_base.html" %}
+
+{% block content %}
+
+<h2>View Trekkers</h2>
+
+<table border="1" cellpadding="5">
+
+<tr>
+
+    <th>ID</th>
+
+    <th>Name</th>
+
+    <th>Username</th>
+
+    <th>Contact</th>
+
+    <th>Status</th>
+
+    <th>Total Bookings</th>
+
+    <th>Total Amount Spent</th>
+
+    <th>Action</th>
+
+</tr>
+
+{% for trekker in trekker_details %}
+
+<tr>
+
+<form method="POST" action="/update_trekker_status/{{ trekker.user.id }}">
+
+    <td>{{ trekker.user.id }}</td>
+
+    <td>{{ trekker.user.name }}</td>
+
+    <td>{{ trekker.user.username }}</td>
+
+    <td>{{ trekker.user.contact }}</td>
+
+    <td>{{ trekker.bookings }}</td>
+
+    <td>₹{{ trekker.amount }}</td>
+
+    <td>
+
+        <select name="status">
+
+            <option value="Approved"
+            {% if trekker.user.status == "Approved" %}selected{% endif %}>
+                Approved
+            </option>
+
+            <option value="Blacklisted"
+            {% if trekker.user.status == "Blacklisted" %}selected{% endif %}>
+                Blacklisted
+            </option>
+
+        </select>
+
+    </td>
+
+    <td>
+        <button type="submit">Update</button>
+    </td>
+
+</form>
+
+</tr>
+
+{% endfor %}
+
+</table>
+
+{% endblock %}

@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>Trekker - Trekking Management</title>
+</head>
+
+<body>
+
+    <h1>Trekking Management System - Trekker</h1>
+
+    <hr>
+
+    <div style="display:flex; align-items:center;">
+
+        <!-- Left Menu -->
+        <div>
+            <a href="/user">Home</a> |
+            <a href="/user/view_treks">Available Treks</a> |
+            <a href="/user/my_bookings">My Bookings</a>
+        </div>
+
+        <!-- Right Menu -->
+        <div style="margin-left:auto;">
+            Trekker: <a href="/edit_profile"><b>{{ session["name"] }}</b></a> |
+            <a href="/logout">Logout</a>
+        </div>
+
+    </div>
+
+    <hr>
+
+    {% block content %}
+    {% endblock %}
+
+    <hr>
+
+</body>
+
+</html>

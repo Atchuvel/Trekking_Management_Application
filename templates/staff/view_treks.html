@@ -1,0 +1,54 @@
+{% extends "staff/staff_base.html" %}
+
+{% block content %}
+
+<h2>View Treks</h2>
+
+{% if treks %}
+
+<table border="1" cellpadding="8">
+
+    <tr>
+        <th>Name</th>
+        <th>Location</th>
+        <th>Difficulty</th>
+        <th>Start Date</th>
+        <th>Duration</th>
+        <th>Price</th>
+        <th>Total Slots</th>
+        <th>Status</th>
+    </tr>
+
+    {% for trek in treks %}
+
+    <tr>
+
+        <td>{{ trek.trek_name }}</td>
+
+        <td>{{ trek.location }}</td>
+
+        <td>{{ trek.difficulty }}</td>
+
+        <td>{{ trek.start_date }}</td>
+
+        <td>{{ trek.duration }} Days</td>
+
+        <td>₹{{ trek.price }}</td>
+
+        <td>{{ trek.available_slots }}</td>
+
+        <td>{{ trek.status }}</td>
+
+    </tr>
+
+    {% endfor %}
+
+</table>
+
+{% else %}
+
+<p>No treks assigned.</p>
+
+{% endif %}
+
+{% endblock %}

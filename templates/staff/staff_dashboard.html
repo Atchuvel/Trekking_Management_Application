@@ -1,0 +1,15 @@
+{% extends "staff/staff_base.html" %}
+
+{% block content %}
+
+<h2>Staff Dashboard - Welcome, {{ session["name"] }}</h2>
+
+<p><b>Total Treks :</b> {{ total_treks }}</p>
+
+<p><b>My Assigned Treks :</b> {{ my_treks }}</p>
+
+<p><b>Open Treks :</b> {{ open_treks }}</p>
+
+<p><b>Completed Treks :</b> {{ completed_treks }}</p>
+
+{% endblock %}

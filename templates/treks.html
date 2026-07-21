@@ -1,0 +1,56 @@
+{% extends "base.html" %}
+
+{% block content %}
+
+<h2>Available Treks</h2>
+
+{% if trek_details %}
+
+<table border="1" cellpadding="8">
+
+    <tr>
+
+        <th>Name</th>
+        <th>Location</th>
+        <th>Difficulty</th>
+        <th>Start Date</th>
+        <th>Duration</th>
+        <th>Price</th>
+        <th>Bookings</th>
+        <th>Status</th>
+
+    </tr>
+
+    {% for item in trek_details %}
+
+    <tr>
+
+        <td>{{ item.trek.trek_name }}</td>
+
+        <td>{{ item.trek.location }}</td>
+
+        <td>{{ item.trek.difficulty }}</td>
+
+        <td>{{ item.trek.start_date }}</td>
+
+        <td>{{ item.trek.duration }} Days</td>
+
+        <td>₹{{ item.trek.price }}</td>
+
+        <td>{{ item.bookings }} / {{ item.trek.available_slots }}</td>
+
+        <td>{{ item.trek.status }}</td>
+
+    </tr>
+
+    {% endfor %}
+
+</table>
+
+{% else %}
+
+<p>No treks available.</p>
+
+{% endif %}
+
+{% endblock %}
